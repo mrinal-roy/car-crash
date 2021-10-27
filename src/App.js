@@ -1,23 +1,20 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import DisplayPage from './components/DisplayPage';
+import ToggleSwitch from './ToggleSwitch'
 
 function App() {
+  const [cardView, setCardView] = useState(true)
+  const viewCards = (val) => {
+    console.log(val)
+    setCardView(val)
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+      <h2 style={{paddingBottom: '20px', marginBottom: '10px'}}><u>Car Crash Dashboard</u></h2>
+      <ToggleSwitch viewCards={viewCards}/>
+      <DisplayPage cardView={cardView}/>
     </div>
   );
 }
